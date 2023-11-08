@@ -2,12 +2,9 @@ const express = require("express");
 const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
 const bcrypt = require("bcrypt");
-const {
-  createBook,
-  getBooks,
-  getBookById,
-  borrowBook,
-} = require("./controllers/bookController");
+const bookController = require("./controllers/bookController");
+const userController = require("./controllers/userController");
+const borrowController = require("./controllers/borrowController");
 
 require("dotenv").config();
 
@@ -16,14 +13,6 @@ const PORT = process.env.PORT || 3000;
 const MONGODB_URI = process.env.MONGODB_URI;
 MONGODB_URI;
 app.use(bodyParser.json());
-
-app.post("/api/books", createBook);
-app.get("/api/books", getBooks);
-app.get("/api/books/:id", getBookById);
-//app.use("/api/users", userRoutes);
-app.post("/api/borrow/:bookId/:userId", borrowBook);
-app.post("/api/return/:bookId/:userId", returnBook);
-app.get("/api/users/:userId/books", getUserBooks);
 
 
 app.listen(PORT, () => {
