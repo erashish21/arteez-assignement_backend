@@ -5,13 +5,14 @@ const bcrypt = require("bcrypt");
 const bookController = require("./controllers/bookController");
 const userController = require("./controllers/userController");
 const borrowController = require("./controllers/borrowController");
-
+const jwt = require("jsonwebtoken");
 require("dotenv").config();
+
 
 const app = express();
 const PORT = process.env.PORT || 3000;
 const MONGODB_URI = process.env.MONGODB_URI;
-MONGODB_URI;
+mongoose.connect(MONGODB_URI, {});
 app.use(bodyParser.json());
 
 
